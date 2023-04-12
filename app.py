@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 
 
 st.set_page_config(page_title='The ACME Day', page_icon='ACME LOGO(T).png', initial_sidebar_state='expanded')
@@ -10,7 +11,8 @@ st.sidebar.image("ACME LOGO(T).png")
 rollnum=st.sidebar.text_input("Roll Number",placeholder="Enter RollNo.",max_chars=10)
 
 if len(rollnum)> 0:
-    data = pd.read_excel("./book.xlsx")
+    csvfile = Path(__file__).parents[1] / 'book.xlsx'
+    data = pd.read_excel(csvfile)
     row = data.loc[data["Roll"] == rollnum]
 
     if len(row) > 0:
