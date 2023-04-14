@@ -6,6 +6,7 @@ inputField.addEventListener("input", function () {
     const imageDiv = document.getElementById("image");
     const image = new Image();
     image.src = "images/" + inputField.value + ".jpg";
+    image.id = "userimage";
     image.alt = "Image not found";
     if (imageDiv.firstChild) {
       imageDiv.replaceChild(image, imageDiv.firstChild);
